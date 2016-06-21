@@ -266,8 +266,8 @@ window.onload = function(){
 				</tr>
 			</thead>
 			<tbody>
-			[#if goodsList?has_content]
-				[#list goodsList as goods]
+			[#if page.resultList?has_content]
+				[#list page.resultList as goods]
 					<tr>
 						<td>${goods.goodsName}</td>
 						<td>

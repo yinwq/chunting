@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yinwq.chunting.entity.Goods;
 import com.yinwq.chunting.service.IGoodsService;
+import com.yinwq.chunting.util.PagedData;
   
   
 @Controller  
@@ -30,22 +31,22 @@ public class GoodsController {
 		if(object != null){ 
 			model.addAttribute("admin", object);  
 		}
-		List<Goods> goodsList = goodsService.selectGoodsList(goods);
-		model.addAttribute("goodsList", goodsList);
+		PagedData<Goods> page = goodsService.selectGoodsList(goods);
+		model.addAttribute("page", page);
 		request.setAttribute("mainPage", "goods/goods_list.ftl");
         return "mainIndex";  
     }  
     
     @ResponseBody
     @RequestMapping("/goods_list")  
-    public List<Goods> goodsList(HttpServletRequest request,Model model,Goods goods){ 
+    public PagedData<Goods> goodsList(HttpServletRequest request,Model model,Goods goods){ 
     	HttpSession session = request.getSession();
     	Object object = session.getAttribute("user");
 		if(object != null){ 
 			model.addAttribute("admin", object);  
 		}
-		List<Goods> goodsList = goodsService.selectGoodsList(goods);
-		return goodsList;
+		PagedData<Goods> page = goodsService.selectGoodsList(goods);
+		return page;
     }  
     
     @RequestMapping("/to_add")  
