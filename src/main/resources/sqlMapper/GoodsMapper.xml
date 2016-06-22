@@ -19,18 +19,9 @@
     id, goods_name, goods_type , total_agent_price, first_agent_price, second_agent_price, third_agent_price, 
     derivative_price, market_price, goods_stock, create_time, update_time
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from t_goods
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <select id="selectGoodsList" resultMap="BaseResultMap" parameterType="com.yinwq.chunting.entity.Goods" >
-    select 
-    	<include refid="Base_Column_List" />
-    from t_goods
-    	where 1=1
-   	 <if test="goodsName != null" >
+  
+  <sql id="Select_List_Criteria">
+  	<if test="goodsName != null" >
       	and goods_name = #{goodsName,jdbcType=VARCHAR}
      </if>
    	 <if test="goodsType != null" >
@@ -63,14 +54,39 @@
      <if test="updateTime != null" >
        	and update_time = #{updateTime,jdbcType=TIMESTAMP}
      </if>
-	 limit #{startRow}, #{endRow}
-	 order by create_time
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_goods
+    where id = #{id,jdbcType=INTEGER}
   </select>
+  
+  <select id="selectGoodsList" resultMap="BaseResultMap" parameterType="com.yinwq.chunting.entity.Goods" >
+    select 
+    	<include refid="Base_Column_List" />
+    from t_goods
+     where 1=1
+   	 	<include refid="Select_List_Criteria"></include>
+	 order by create_time
+	 limit #{startRow}, #{endRow}
+  </select>
+  
+  <select id="selectGoodsListCount" resultType="java.lang.Integer" parameterType="com.yinwq.chunting.entity.Goods" >
+    select 
+    	count(*)
+    from t_goods
+     where 1=1
+   	 	<include refid="Select_List_Criteria"></include>
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from t_goods
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.yinwq.chunting.entity.Goods" >
+  
+  <insert id="insert" parameterType="com.yinwq.chunting.entity.Goods" useGeneratedKeys="true" keyProperty="id">
     insert into t_goods (id, goods_name, goods_type , total_agent_price, 
       first_agent_price, second_agent_price, third_agent_price, 
       derivative_price, market_price, goods_stock, 

@@ -1,5 +1,6 @@
 package com.yinwq.chunting.entity;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -134,6 +135,21 @@ public class Goods extends PagedQuery {
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
+	
+	public String getCreateTimeStr(){
+		if(this.createTime != null)
+			return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(this.createTime);
+		else
+			return "";
+	}
+	
+	public String getUpdateTimeStr(){
+		if(this.updateTime != null)
+			return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(this.updateTime);
+		else
+			return "";
+	}
+	
 	@Override
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);

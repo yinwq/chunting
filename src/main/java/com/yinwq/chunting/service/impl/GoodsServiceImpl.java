@@ -1,7 +1,5 @@
 package com.yinwq.chunting.service.impl;  
   
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -19,7 +17,8 @@ public class GoodsServiceImpl implements IGoodsService {
 
 	public int insertGoods(Goods goods) {
 		// TODO Auto-generated method stub
-		return goodsDao.insert(goods);
+		goodsDao.insert(goods);
+		return goods.getId();
 	}
 
 	public Goods getGoodsById(Integer goodsId) {
@@ -32,8 +31,19 @@ public class GoodsServiceImpl implements IGoodsService {
 		PagedData<Goods> paged= new PagedData<Goods>();
 		paged.setPageNo(goods.getPageNo());
 		paged.setPageSize(goods.getPageSize());
+		paged.setTotalSize(goodsDao.selectGoodsListCount(goods));
 		paged.setResultList(goodsDao.selectGoodsList(goods));
 		return paged;
+	}
+
+	public int updateGoods(Goods goods) {
+		// TODO Auto-generated method stub
+		int isTure = goodsDao.updateByPrimaryKeySelective(goods);
+		if(isTure == 1){
+			return goods.getId();
+		}
+		System.out.println("修改失败！");
+		return 0;
 	} 
     
   

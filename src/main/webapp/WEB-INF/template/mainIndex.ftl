@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>蠢婷出货管理系统</title>
-<link href="/style/main.css" rel="stylesheet">
+<link href="/css/main.css" rel="stylesheet">
 <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
 <link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 <link href="/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">

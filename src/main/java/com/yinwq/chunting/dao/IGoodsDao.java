@@ -19,4 +19,6 @@ public interface IGoodsDao {
     int updateByPrimaryKey(Goods record);
     
     List<Goods> selectGoodsList(Goods goods);
+    
+    int selectGoodsListCount(Goods goods);
 }

@@ -13,7 +13,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
  */
 public class PagedQuery implements Serializable {
 	private static final long serialVersionUID = 1L;
-	public static final int defaultPageSize = 20;
+	public static final int defaultPageSize = 10;
 	public static final int defaultPageNo = 1;
 	
 	private Integer pageSize = defaultPageSize;

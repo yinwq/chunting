@@ -1,0 +1,37 @@
+.page {
+    display: inline-block;
+    text-align: center;
+}
+.page span.disabled {
+    padding: 5px 8px;
+    border: #ddd 1px solid;
+    color: #BAB8B8;
+    cursor: not-allowed;
+}
+.page span {
+    display: inline-block;
+    margin-right: 5px;
+}
+.page span.current {
+    padding: 5px 8px;
+    border: #C2D5E3 1px solid;
+    font-weight: bold;
+    background: #2185D0;
+    color: #fff;
+    border-radius: 3px;
+}
+.page span a {
+    padding: 5px 8px;
+    border: #C2D5E3 1px solid;
+    color: #325D7F;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
+#setPageSize{
+	margin:5px 0px;
+}
+.pg_count {
+    color: #666;
+    padding: 5px 8px;
+}
