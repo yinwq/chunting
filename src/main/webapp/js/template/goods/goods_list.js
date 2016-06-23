@@ -28,10 +28,10 @@ $(function(){
 	        goodsType:{
 	        	required:true
 	        },
-	        totalAgentPrice:{
+	        /*totalAgentPrice:{
 	        	required:true,
 	        	number:true
-	        },
+	        },*/
 	        firstAgentPrice:{
 	        	required:true,
 	        	number:true
@@ -144,6 +144,8 @@ function research() {
 	//得到select的option集合
 	var setPageSize=$("#setPageSize").val();
 	$("#pageSize").val(setPageSize);
+	//切换显示条数后默认查第一页
+	$("#pageNo").val(1);
 	//调用查询方法
 	search();
 }

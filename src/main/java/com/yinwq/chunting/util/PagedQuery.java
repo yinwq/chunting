@@ -38,10 +38,6 @@ public class PagedQuery implements Serializable {
 	public Integer getStartRow() {
 		return (pageNo - 1) * pageSize;
 	}
-	public Integer getEndRow(){
-		return pageNo * pageSize;
-	}
-	
 	@Override
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);

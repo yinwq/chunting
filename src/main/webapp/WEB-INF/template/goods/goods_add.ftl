@@ -38,7 +38,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td><font color="red">*</font>总代价：</td>
+						<td><!--<font color="red">*</font>-->总代价：</td>
 						<td><input type="text" id="totalAgentPrice"  name="totalAgentPrice" value="${goods.totalAgentPrice}"  style="margin-top:5px;height:30px;" /></td>
 					</tr>
 					<tr>

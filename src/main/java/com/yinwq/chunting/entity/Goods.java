@@ -13,30 +13,63 @@ public class Goods extends PagedQuery {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
+	/**
+	 * Id
+	 */
 	private Integer id;
-
+	
+	/**
+	 * 商品名称
+	 */
     private String goodsName;
     
     /** 商品类型 : 1:三草 2:彩妆**/
     private Integer goodsType;
-
+    
+    /**
+	 * 总代价
+	 */
     private Double totalAgentPrice;
-
+    
+    /**
+	 * 一级价
+	 */
     private Double firstAgentPrice;
-
+    
+    /**
+	 * 二级价
+	 */
     private Double secondAgentPrice;
 
+    /**
+	 * 三级价
+	 */
     private Double thirdAgentPrice;
-
+    
+    /**
+	 * 微商价
+	 */
     private Double derivativePrice;
     
+    /**
+	 * 市场价
+	 */
     private Double marketPrice;
-
+    
+    /**
+	 * 库存
+	 */
     private Integer goodsStock;
     
+    /**
+	 * 创建时间
+	 */
     private Date createTime;
     
+    /**
+	 * 修改时间
+	 */
     private Date updateTime;
     
     /**

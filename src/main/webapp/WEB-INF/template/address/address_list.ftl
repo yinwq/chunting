@@ -2,7 +2,7 @@
 <script type="text/javascript" src="/js/vendor/jquery-validation/dist/jquery.validate.js" ></script>
 <script type="text/javascript" src="/js/base/formatData.js"></script>
 <script type="text/javascript" src="/js/vendor/laydate/laydate.js"></script>
-<script type="text/javascript" src="/js/template/goods/goods_list.js"></script>
+<script type="text/javascript" src="/js/template/address/address_list.js"></script>
 
 <div class="data_list">
 	<div class="data_list_title">
@@ -11,19 +11,19 @@
 	<input type="hidden" id="pageSize" value=""/>
 	<input type="hidden" id="pageNo" value=""/>
 	<form name="search_form" id="search_form" class="form-search" style="padding-bottom: 0px">
-			<button class="btn btn-success" type="button" style="margin-right: 50px;" onclick="javascript:window.location='/goods/to_add.jhtml'">添加</button>
+			<button class="btn btn-success" type="button" style="margin-right: 50px;" onclick="javascript:window.location='/address/to_add.jhtml'">添加</button>
 			<span class="data_search">
 				<span>创建时间段：</span>
 				<input id="strat_time" name="startTime" value="${startTime}"  onclick="laydate({istime:true, format: 'YYYY-MM-DD hh:mm:ss'})" type="text">
 				-
 				<input id="end_time" name="endTime" value="${endTime}"  onclick="laydate({istime:true, format: 'YYYY-MM-DD hh:mm:ss'})" type="text">
-           		<span style="margin-left:50px;">商品类型：</span>
+           		<span style="margin-left:50px;">地址类型：</span>
 				<select id="goodsType" name="goodsType" style="width: 100px;">
 					<option value="">请选择</option>
-					<option value="1">三草两木</option>
-					<option value="2">珍慕彩妆</option>
+					<option value="1">代理</option>
+					<option value="2">客户</option>
 				</select>
-				<span style="margin-left:50px;">商品名称：</span>
+				<span style="margin-left:50px;">收货人：</span>
 				&nbsp;<input id="goodsName" name="goodsName" type="text"  style="width:150px;" class="search-query" value="${goodsName }">
 				&nbsp;<button type="button" id="search" class="btn btn-info" onkeydown="if(event.keyCode==13) search()">搜索</button>
 			</span>
@@ -32,15 +32,11 @@
 		<table class="table table-striped table-bordered table-hover datatable">
 			<thead>
 				<tr>
-				<th>商品名</th>
-				<th>商品类型</th>
-				<th>总代价</th>
-				<th>一级价</th>
-				<th>二级价</th>
-				<th>三级价</th>
-				<th>微商价</th>
-				<th>市场价</th>
-				<th>库存</th>
+				<th>收货人</th>
+				<th>地址类型</th>
+				<th>省市县/区</th>
+				<th>详细地址</th>
+				<th>电话</th>
 				<th>创建时间</th>
 				<th>操作</th>
 				</tr>
