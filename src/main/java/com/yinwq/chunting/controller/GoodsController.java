@@ -54,7 +54,7 @@ public class GoodsController {
     		goods = goodsService.getGoodsById(goods.getId());
     		model.addAttribute("goods",goods);
     	}
-    	request.setAttribute("mainPage", "goods/add.ftl");
+    	request.setAttribute("mainPage", "goods/goods_add.ftl");
     	
     	return "mainIndex";  
     }  
