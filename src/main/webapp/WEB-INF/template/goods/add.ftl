@@ -1,4 +1,4 @@
-<script type="text/javascript" src="/js/jquery-validation/dist/jquery.validate.js" ></script>
+<script type="text/javascript" src="/js/vendor/jquery-validation/dist/jquery.validate.js" ></script>
 <script type="text/javascript" src="/js/template/goods/goods_list.js"></script>
 <style type="text/css">
 	label {
@@ -14,14 +14,11 @@
 </script>
 <div class="data_list">
 		<div class="data_list_title">
-		<c:choose>
-			<c:when test="${student.studentId!=null }">
-				修改商品信息
-			</c:when>
-			<c:otherwise>
+			[#if goods.id?has_content]
+				修改商品
+			[#else]
 				添加商品
-			</c:otherwise>
-		</c:choose>
+			[/#if]
 		</div>
 		<form action="/goods/add.jhtml" id="base_info_form" method="post" onsubmit="return checkForm()">
 			<div class="data_form" >

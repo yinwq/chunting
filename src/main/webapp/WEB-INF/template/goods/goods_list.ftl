@@ -1,72 +1,31 @@
 <link rel="stylesheet" type="text/css" href="/css/page.css">
+<script type="text/javascript" src="/js/vendor/jquery-validation/dist/jquery.validate.js" ></script>
+<script type="text/javascript" src="/js/base/formatData.js"></script>
+<script type="text/javascript" src="/js/vendor/laydate/laydate.js"></script>
 <script type="text/javascript" src="/js/template/goods/goods_list.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	$("ul li:eq(1)").addClass("active");
-	$('.form_date').datetimepicker({
-	    language:  'en',
-	    weekStart: 1,
-	    todayBtn:  1,
-		autoclose: 1,
-		todayHighlight: 1,
-		startView: 2,
-		minView: 2,
-		forceParse: 0
-	});
-	$('.datatable').dataTable( {        				
-		 "oLanguage": {
-				"sUrl": "/DormManage/media/zh_CN.json"
-		 },
-		"bLengthChange": false, //改变每页显示数据数量
-		"bFilter": false, //过滤功能
-		"aoColumns": [
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			{ "asSorting": [ ] },
-			{ "asSorting": [ ] }
-		]
-	});
-});
-</script>
-
-<script type="text/javascript">
-	
- 
-</script>
 
 <div class="data_list">
 	<div class="data_list_title">
 		商品列表
 	</div>
-	<input type="hidden" id="pageSize" value="5"/>
+	<input type="hidden" id="pageSize" value=""/>
 	<input type="hidden" id="pageNo" value=""/>
-	<form name="myForm" class="form-search" method="post" action="record?action=search" style="padding-bottom: 0px">
+	<form name="search_form" id="search_form" class="form-search" style="padding-bottom: 0px">
 			<button class="btn btn-success" type="button" style="margin-right: 50px;" onclick="javascript:window.location='/goods/to_add.jhtml'">添加</button>
 			<span class="data_search">
-				<span class="controls input-append date form_date" style="margin-right: 10px" data-date="" data-date-format="yyyy-mm-dd" data-link-format="yyyy-mm-dd">
-                	<input id="startDate" name="startDate" style="width:120px" placeholder="起始日期" type="text" value="${startDate }" readonly >
-                	<span class="add-on"><i class="icon-remove"></i></span>
-					<span class="add-on"><i class="icon-th"></i></span>
-           		</span>
-				<span class="controls input-append date form_date" style="margin-right: 10px" data-date="" data-date-format="yyyy-mm-dd" data-link-format="yyyy-mm-dd">
-                	<input id="endDate" name="endDate" style="width:120px;" placeholder="终止日期" type="text" value="${endDate }" readonly>
-                	<span class="add-on"><i class="icon-remove"></i></span>
-					<span class="add-on"><i class="icon-th"></i></span>
-           		 </span>
-				<select id="buildToSelect" name="buildToSelect" style="width: 120px;">
-				<option value="">全部宿舍楼</option>
+				<span>创建时间段：</span>
+				<input id="strat_time" name="startTime" value="${startTime}"  onclick="laydate({istime:true, format: 'YYYY-MM-DD hh:mm:ss'})" type="text">
+				-
+				<input id="end_time" name="endTime" value="${endTime}"  onclick="laydate({istime:true, format: 'YYYY-MM-DD hh:mm:ss'})" type="text">
+           		<span style="margin-left:50px;">商品类型：</span>
+				<select id="goodsType" name="goodsType" style="width: 100px;">
+					<option value="">请选择</option>
+					<option value="1">三草两木</option>
+					<option value="2">珍慕彩妆</option>
 				</select>
-				<select id="searchType" name="searchType" style="width: 80px;">
-					<option value="name">姓名</option>
-				</select>
-				&nbsp;<input id="s_studentText" name="s_studentText" type="text"  style="width:120px;" class="input-medium search-query" value="${s_studentText }">
-				&nbsp;<button type="submit" class="btn btn-info" onkeydown="if(event.keyCode==13) myForm.submit()">搜索</button>
+				<span style="margin-left:50px;">商品名称：</span>
+				&nbsp;<input id="goodsName" name="goodsName" type="text"  style="width:150px;" class="search-query" value="${goodsName }">
+				&nbsp;<button type="button" id="search" class="btn btn-info" onkeydown="if(event.keyCode==13) search()">搜索</button>
 			</span>
 	</form>
 	<div>

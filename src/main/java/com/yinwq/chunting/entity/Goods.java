@@ -39,6 +39,13 @@ public class Goods extends PagedQuery {
     
     private Date updateTime;
     
+    /**
+     * 搜索创建时间区间
+     */
+	private String startTime;
+
+	private String endTime;
+    
 
     public Integer getId() {
         return id;
@@ -136,6 +143,22 @@ public class Goods extends PagedQuery {
 		this.updateTime = updateTime;
 	}
 	
+	public String getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+
+	public String getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
+	}
+
 	public String getCreateTimeStr(){
 		if(this.createTime != null)
 			return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(this.createTime);

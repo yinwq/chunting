@@ -21,8 +21,8 @@
   </sql>
   
   <sql id="Select_List_Criteria">
-  	<if test="goodsName != null" >
-      	and goods_name = #{goodsName,jdbcType=VARCHAR}
+  	<if test="goodsName != null and goodsName != ''" >
+  		and goods_name LIKE CONCAT((CONCAT('%' , #{goodsName} , '%')))
      </if>
    	 <if test="goodsType != null" >
       	and goods_type = #{goodsType,jdbcType=INTEGER}
@@ -54,6 +54,16 @@
      <if test="updateTime != null" >
        	and update_time = #{updateTime,jdbcType=TIMESTAMP}
      </if>
+     <if test="startTime!=null and startTime!=''">
+		<![CDATA[
+			and DATE_FORMAT(#{startTime}, '%Y-%m-%d') <=  create_time
+	 	]]>
+	 </if>
+	 <if test="endTime!=null and endTime!=''">
+		<![CDATA[
+			and DATE_FORMAT(#{endTime}, '%Y-%m-%d') >=  create_time
+	 	]]>
+	 </if>
   </sql>
   
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >

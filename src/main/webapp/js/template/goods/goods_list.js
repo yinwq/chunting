@@ -1,5 +1,6 @@
 //初始化，加载完成后执行
 $(function(){
+	init();
 	search();
 	
 	//保存商品
@@ -11,6 +12,11 @@ $(function(){
 	$(".page").on("click","span a",function(){
 		var page = $(this).attr("page");
 		$("#pageNo").val(page);
+		search();
+	});
+	
+	//搜索按钮
+	$("#search").on("click",function(){
 		search();
 	});
 	var base_vali = $("#base_info_form").validate({
@@ -106,14 +112,31 @@ $(function(){
 		}
 	}); 
 })
+
+//初始化
+function init(){
+	$("ul li:eq(1)").addClass("active");
+	$('.form_datetime').datetimepicker({
+	    language:  'en',
+	    weekStart: 1,
+	    todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 1,
+		minView: 2,
+		forceParse: 0,
+	});
+}
+
+
 //搜索按钮绑定回车事件
-document.onkeydown = function(event){
+/*document.onkeydown = function(event){
 	if (event.keyCode == 13) {
 		event.cancelBubble = true;
 		event.returnValue = false;
 		search();
 	}
-} 
+} */
  
  
 //修改每页显示条数时，要从第一页开始查起
@@ -127,13 +150,10 @@ function research() {
  	
 var search_param = "";
 function search_param_set(){
-   var pageSize=$('#pageSize').val();
-   var pageNo=$('#pageNo').val();
-   var data={
-        pageNo:pageNo,
-        pageSize:pageSize
-   };
-   search_param = data;
+	search_param = $("#search_form").serialize();
+	var pageSize=$('#pageSize').val();
+	var pageNo=$('#pageNo').val();
+	search_param = search_param + "&pageSize=" + pageSize + "&pageNo=" + pageNo;
 }
  	
 //搜索
@@ -218,9 +238,25 @@ function thisEdit(goodsId){
 	window.location="/goods/to_add.jhtml?id="+goodsId;
 }
 //删除商品
-function thisDel(recordId) {
+function thisDel(goodsId) {
 	if(confirm("您确定要删除这条记录吗？")) {
-		window.location="record?action=delete&recordId="+recordId;
+		$.ajax({
+	    	type:"GET",
+	    	url:"/goods/delete.jhtml",
+	    	data:{id:goodsId},
+	    	dataType:"json",
+	    	async:false,
+	    	success:function(result){
+	    		if(result.success == true){
+	        		alert("删除成功！");
+	        		window.location="/goods/list.jhtml";
+	      		}
+	    	},
+	    	error:function(){
+	      		alert("删除失败！");       
+	    	} 
+	  	});
+		
 	}
 }
 
@@ -228,43 +264,47 @@ function thisDel(recordId) {
 function setPage(totalCount,pageSize,pageNo){
 	$("#pageNo").val(pageNo);
 	$("#pageSize").val(pageSize);
-	$(".pg_count").	text("共"+totalCount+"条");
 	//总页数
 	var pageCount = (totalCount%pageSize)==0?(totalCount/pageSize):(Math.ceil(totalCount/pageSize));
 	var pageDiv = '';
-	//首页
-	if(pageNo == 1){
-		pageDiv+='<span title="首页" class="disabled">首页</span>';
-		pageDiv+='<span title="上一页" class="disabled">上一页</span>';
-	}else{
-		pageDiv+='<span title="首页"><a href="javascript:void(0);" page="1">首页</a></span>';
-		pageDiv+='<span title="上一页"><a href="javascript:void(0);" page="'+(pageNo-1)+'">上一页</a></span>';
-	}
-	//默认显示6条
-	if(((pageCount-pageNo)+1) >= 6){
-		for(var i=0;i<6;i++){
-			if(i==0){
-				pageDiv+='<span class="current" title="第'+pageNo+'页">pageNo</span>';
-			}else{
-				pageDiv+='<span title="第'+(pageNo+i)+'页"><a href="javascript:void(0);" page="'+(pageNo+i)+'">'+(pageNo+i)+'</a></span>';
+	if(pageCount != 0){
+		//首页
+		if(pageNo == 1){
+			pageDiv+='<span title="首页" class="disabled">首页</span>';
+			pageDiv+='<span title="上一页" class="disabled">上一页</span>';
+		}else{
+			pageDiv+='<span title="首页"><a href="javascript:void(0);" page="1">首页</a></span>';
+			pageDiv+='<span title="上一页"><a href="javascript:void(0);" page="'+(pageNo-1)+'">上一页</a></span>';
+		}
+		//默认显示6条
+		if(((pageCount-pageNo)+1) >= 6){
+			for(var i=0;i<6;i++){
+				if(i==0){
+					pageDiv+='<span class="current" title="第'+pageNo+'页">pageNo</span>';
+				}else{
+					pageDiv+='<span title="第'+(pageNo+i)+'页"><a href="javascript:void(0);" page="'+(pageNo+i)+'">'+(pageNo+i)+'</a></span>';
+				}
+			}
+		}else{
+			for(var i=1;i<=pageCount;i++){
+				if(i==pageNo){
+					pageDiv+='<span class="current" title="第'+pageNo+'页">'+pageNo+'</span>';
+				}else{
+					pageDiv+='<span title="第'+i+'页"><a href="javascript:void(0);" page="'+i+'">'+i+'</a></span>';
+				}
 			}
 		}
-	}else{
-		for(var i=1;i<=pageCount;i++){
-			if(i==pageNo){
-				pageDiv+='<span class="current" title="第'+pageNo+'页">'+pageNo+'</span>';
-			}else{
-				pageDiv+='<span title="第'+i+'页"><a href="javascript:void(0);" page="'+i+'">'+i+'</a></span>';
-			}
+		//下一页
+		if(pageNo==pageCount){
+			pageDiv+='<span title="下一页" class="disabled">下一页</span>';
+			pageDiv+='<span title="尾页" class="disabled">尾页</span>';
+		}else{
+			pageDiv+='<span title="下一页"><a href="javascript:void(0);" page="'+(pageNo+1)+'">下一页</a></span>'
+			pageDiv+='<span title="尾页"><a href="javascript:void(0);" page="'+pageCount+'">尾页</a></span>'
 		}
-	}
-	//下一页
-	if(pageNo==pageCount){
-		pageDiv+='<span title="下一页" class="disabled">下一页</span>';
-		pageDiv+='<span title="尾页" class="disabled">尾页</span>';
+		$(".pg_count").	text("共"+totalCount+"条");
 	}else{
-		pageDiv+='<span title="下一页"><a href="javascript:void(0);" page="'+(pageNo+1)+'">下一页</a></span>'
-		pageDiv+='<span title="尾页"><a href="javascript:void(0);" page="'+pageCount+'">尾页</a></span>'
+		$(".pg_count").	text("");
 	}
 	$(".page").html(pageDiv);
 	$("#setPageSize option").each(function(){

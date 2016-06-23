@@ -44,6 +44,11 @@ public class GoodsServiceImpl implements IGoodsService {
 		}
 		System.out.println("修改失败！");
 		return 0;
+	}
+
+	public int deleteGoods(Integer goodsId) {
+		// TODO Auto-generated method stub
+		return goodsDao.deleteByPrimaryKey(goodsId);
 	} 
     
   

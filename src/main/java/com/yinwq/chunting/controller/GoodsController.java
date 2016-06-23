@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yinwq.chunting.entity.Goods;
@@ -36,13 +37,8 @@ public class GoodsController {
     }  
     
     @ResponseBody
-    @RequestMapping("/goods_list")  
+    @RequestMapping(value = "/goods_list" , method=RequestMethod.POST)  
     public PagedData<Goods> goodsList(HttpServletRequest request,Model model,Goods goods){ 
-    	HttpSession session = request.getSession();
-    	Object object = session.getAttribute("user");
-		if(object != null){ 
-			model.addAttribute("admin", object);  
-		}
 		PagedData<Goods> page = goodsService.selectGoodsList(goods);
 		return page;
     }  
@@ -67,18 +63,29 @@ public class GoodsController {
     @ResponseBody
     public JsonEntity add(HttpServletRequest request,Goods goods ,Model model){ 
     	JsonEntity json = new JsonEntity(true);
-    	HttpSession session = request.getSession();
-    	Object object = session.getAttribute("user");
-    	if(object != null){ 
-    		model.addAttribute("admin", object);  
-    	}
+    	int id = 0;
     	if(goods.getId() == null){
 	    	goods.setCreateTime(new Date());
-	    	int id = goodsService.insertGoods(goods);
-	    	json.addData("id", id);
+	    	id = goodsService.insertGoods(goods);
     	}else{
-	    	int id = goodsService.updateGoods(goods);
-	    	json.addData("id", id);
+	    	id = goodsService.updateGoods(goods);
+    	}
+    	json.addData("id", id);
+    	return json;  
+    }  
+    @RequestMapping("/delete")
+    @ResponseBody
+    public JsonEntity delete(HttpServletRequest request,Goods goods ,Model model){ 
+    	JsonEntity json = new JsonEntity(true);
+    	int id = 0;
+    	if(goods.getId() == null){
+	    	json.setSuccess(false);
+	    	System.out.println("参数缺失");
+    	}else{
+	    	id = goodsService.deleteGoods(goods.getId());
+	    	if(id == 1){
+	    		json.setSuccess(true);
+	    	}
     	}
     	return json;  
     }  

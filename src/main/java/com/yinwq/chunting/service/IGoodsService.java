@@ -1,7 +1,6 @@
 package com.yinwq.chunting.service;  
 
 import com.yinwq.chunting.entity.Goods;
-import com.yinwq.chunting.entity.User;
 import com.yinwq.chunting.util.PagedData;
   
 public interface IGoodsService {  
@@ -13,4 +12,6 @@ public interface IGoodsService {
 	public PagedData<Goods> selectGoodsList(Goods goods);
 	
 	public int updateGoods(Goods goods);
+	
+	public int deleteGoods(Integer id);
 }  
