@@ -1,6 +1,7 @@
 package com.yinwq.chunting.controller;  
   
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.yinwq.chunting.entity.Area;
 import com.yinwq.chunting.entity.Goods;
+import com.yinwq.chunting.service.IAreaService;
 import com.yinwq.chunting.service.IGoodsService;
 import com.yinwq.chunting.util.JsonEntity;
 import com.yinwq.chunting.util.PagedData;
@@ -24,6 +27,9 @@ public class AddressController {
 	
 	@Resource
 	private IGoodsService goodsService;
+	
+	@Resource
+	private IAreaService areaService;
 	
     @RequestMapping("/list")  
     public String list(HttpServletRequest request,Model model,Goods goods){ 
@@ -44,19 +50,28 @@ public class AddressController {
     }  
     
     @RequestMapping("/to_add")  
-    public String toAdd(HttpServletRequest request,Model model,Goods goods){ 
+    public String toAdd(HttpServletRequest request,Model model,Area area){ 
     	HttpSession session = request.getSession();
     	Object object = session.getAttribute("user");
     	if(object != null){ 
     		model.addAttribute("admin", object);  
     	}
-    	if(goods.getId() != null){
-    		goods = goodsService.getGoodsById(goods.getId());
-    		model.addAttribute("goods",goods);
+    	if(area.getAreaId() != null){
+    		area = areaService.getAreaById(area.getAreaId());
+    		model.addAttribute("area",area);
     	}
     	request.setAttribute("mainPage", "address/address_add.ftl");
     	
     	return "mainIndex";  
+    }  
+    
+    @RequestMapping("/areas")  
+    @ResponseBody
+    public JsonEntity areas(HttpServletRequest request,Model model,Area area){ 
+    	JsonEntity json = new JsonEntity(true);
+    	List<Area> aeraList = areaService.selectAreaList(area);
+    	json.addData("aeraList",aeraList);
+    	return json;  
     }  
     
     @RequestMapping("/add")
@@ -73,6 +88,7 @@ public class AddressController {
     	json.addData("id", id);
     	return json;  
     }  
+    
     @RequestMapping("/delete")
     @ResponseBody
     public JsonEntity delete(HttpServletRequest request,Goods goods ,Model model){ 
