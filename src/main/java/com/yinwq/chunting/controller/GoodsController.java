@@ -1,21 +1,19 @@
-package com.yinwq.chunting.controller;  
-  
-import java.util.Date;
+package com.yinwq.chunting.controller;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
+import com.yinwq.chunting.entity.Goods;
+import com.yinwq.chunting.service.IGoodsService;
+import com.yinwq.chunting.util.JsonEntity;
+import com.yinwq.chunting.util.PagedData;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.yinwq.chunting.entity.Goods;
-import com.yinwq.chunting.service.IGoodsService;
-import com.yinwq.chunting.util.JsonEntity;
-import com.yinwq.chunting.util.PagedData;
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.Date;
   
   
 @Controller  
@@ -79,9 +77,9 @@ public class GoodsController {
     	JsonEntity json = new JsonEntity(true);
     	int id = 0;
     	if(goods.getId() == null){
-	    	json.setSuccess(false);
-	    	System.out.println("参数缺失");
-    	}else{
+			System.out.println("参数缺失");
+			json.setSuccess(false);
+		}else{
 	    	id = goodsService.deleteGoods(goods.getId());
 	    	if(id == 1){
 	    		json.setSuccess(true);

@@ -1,14 +1,13 @@
-package com.yinwq.chunting.controller;  
-  
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
+package com.yinwq.chunting.controller;
 
+import com.yinwq.chunting.entity.User;
+import com.yinwq.chunting.service.IUserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.yinwq.chunting.entity.User;
-import com.yinwq.chunting.service.IUserService;
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
   
   
 @Controller  

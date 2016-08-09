@@ -1,17 +1,4 @@
-package com.yinwq.chunting.controller;  
-  
-import java.util.Date;
-import java.util.List;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+package com.yinwq.chunting.controller;
 
 import com.yinwq.chunting.entity.Area;
 import com.yinwq.chunting.entity.Goods;
@@ -19,6 +6,17 @@ import com.yinwq.chunting.service.IAreaService;
 import com.yinwq.chunting.service.IGoodsService;
 import com.yinwq.chunting.util.JsonEntity;
 import com.yinwq.chunting.util.PagedData;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.Date;
+import java.util.List;
   
   
 @Controller  
@@ -69,8 +67,8 @@ public class AddressController {
     @ResponseBody
     public JsonEntity areas(HttpServletRequest request,Model model,Area area){ 
     	JsonEntity json = new JsonEntity(true);
-    	List<Area> aeraList = areaService.selectAreaList(area);
-    	json.addData("aeraList",aeraList);
+    	List<Area> areaList = areaService.selectAreaList(area);
+    	json.addData("areaList",areaList);
     	return json;  
     }  
     
@@ -78,7 +76,7 @@ public class AddressController {
     @ResponseBody
     public JsonEntity add(HttpServletRequest request,Goods goods ,Model model){ 
     	JsonEntity json = new JsonEntity(true);
-    	int id = 0;
+    	int id;
     	if(goods.getId() == null){
 	    	goods.setCreateTime(new Date());
 	    	id = goodsService.insertGoods(goods);
