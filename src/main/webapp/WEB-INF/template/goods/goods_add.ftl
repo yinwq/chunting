@@ -1,5 +1,5 @@
-<script type="text/javascript" src="/js/vendor/jquery-validation/dist/jquery.validate.js" ></script>
-<script type="text/javascript" src="/js/template/goods/goods_list.js"></script>
+<script type="text/javascript" src="${base}/js/vendor/jquery-validation/dist/jquery.validate.js" ></script>
+<script type="text/javascript" src="${base}/js/template/goods/goods_list.js"></script>
 <style type="text/css">
 	label {
 		display:inline-block !important;

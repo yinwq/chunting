@@ -106,7 +106,7 @@ $(function(){
 	    submitHandler:function(){
 	    	if(save_base_info()){
 				if(next_handler == 0){
-					window.location.href="${base}/goods/list.jhtml";
+					window.location.href=base + "/goods/list.jhtml";
 				}
 			}
 		}
@@ -164,7 +164,7 @@ function search(){
 	$.ajax({
 		type: "POST",
 		async: false,
-		url: "${base}/goods/goods_list.jhtml",
+		url: base + "/goods/goods_list.jhtml",
 		data:search_param,
 		dataType:"json",
 		success: function (result) {
@@ -217,7 +217,7 @@ function save_base_info(){
 	returnflag = false;
 	$.ajax({
     	type:"POST",
-    	url:"${base}/goods/add.jhtml",
+    	url:base + "/goods/add.jhtml",
     	data:$("#base_info_form").serialize(),
     	dataType:"json",
     	async:false,
@@ -237,21 +237,21 @@ function save_base_info(){
 
 //编辑商品
 function thisEdit(goodsId){
-	window.location="${base}/goods/to_add.jhtml?id="+goodsId;
+	window.location=base + "/goods/to_add.jhtml?id="+goodsId;
 }
 //删除商品
 function thisDel(goodsId) {
 	if(confirm("您确定要删除这条记录吗？")) {
 		$.ajax({
 	    	type:"GET",
-	    	url:"${base}/goods/delete.jhtml",
+	    	url:base + "/goods/delete.jhtml",
 	    	data:{id:goodsId},
 	    	dataType:"json",
 	    	async:false,
 	    	success:function(result){
 	    		if(result.success == true){
 	        		alert("删除成功！");
-	        		window.location="${base}/goods/list.jhtml";
+	        		window.location=base + "/goods/list.jhtml";
 	      		}
 	    	},
 	    	error:function(){

@@ -4,23 +4,24 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>蠢婷出货管理系统</title>
-<link href="/css/main.css" rel="stylesheet">
-<link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
-<link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-<link href="/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+<link href="${base}/css/main.css" rel="stylesheet">
+<link href="${base}/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="${base}/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="${base}/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 <link rel="stylesheet" type="text/css" href="http://sandbox.runjs.cn/uploads/rs/238/n8vhm36h/dataTables.bootstra.css">
 <script type="text/javascript" src="http://sandbox.runjs.cn/uploads/rs/238/n8vhm36h/jquery.js"></script>
 <script type="text/javascript" src="http://sandbox.runjs.cn/uploads/rs/238/n8vhm36h/jquery.dataTables.js"></script>
 <script type="text/javascript" src="http://sandbox.runjs.cn/uploads/rs/238/n8vhm36h/bootstrap.min.js"></script>
 <script type="text/javascript" src="http://sandbox.runjs.cn/uploads/rs/238/n8vhm36h/dataTables.bootstrap.js"></script>
-<script type="text/javascript" src="/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
-<script type="text/javascript" src="/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+<script type="text/javascript" src="${base}/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="${base}/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
 <script src="${base}/bootstrap/js/bootstrap.js"></script>
 
 <script type="text/javascript">
 	$(document).ready(function(){
    	 	$("#DataTables_Table_0_wrapper .row-fluid").remove();
 	});
+    var base = "${base}";
 </script>
 <style type="text/css">
 

@@ -1,8 +1,8 @@
-<link rel="stylesheet" type="text/css" href="/css/page.css">
-<script type="text/javascript" src="/js/vendor/jquery-validation/dist/jquery.validate.js" ></script>
-<script type="text/javascript" src="/js/base/formatData.js"></script>
-<script type="text/javascript" src="/js/vendor/laydate/laydate.js"></script>
-<script type="text/javascript" src="/js/template/address/address_list.js"></script>
+<link rel="stylesheet" type="text/css" href="${base}/css/page.css">
+<script type="text/javascript" src="${base}/js/vendor/jquery-validation/dist/jquery.validate.js" ></script>
+<script type="text/javascript" src="${base}/js/base/formatData.js"></script>
+<script type="text/javascript" src="${base}/js/vendor/laydate/laydate.js"></script>
+<script type="text/javascript" src="${base}/js/template/address/address_list.js"></script>
 
 <div class="data_list">
 	<div class="data_list_title">
