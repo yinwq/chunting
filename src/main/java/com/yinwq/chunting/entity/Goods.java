@@ -1,15 +1,13 @@
 package com.yinwq.chunting.entity;
 
 import com.yinwq.chunting.util.PagedQuery;
-
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Goods extends PagedQuery implements Serializable {
+public class Goods extends PagedQuery {
 
 	/**
 	 * 
