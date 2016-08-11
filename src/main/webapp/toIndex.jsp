@@ -5,7 +5,7 @@
 <html>
 <body>
 	<script type="text/javascript">
-		window.location.href = 'login/toLogin.jhtml';
+		window.location.href = '${base}/login/toLogin.jhtml';
 	</script>
 </body>
 </html>

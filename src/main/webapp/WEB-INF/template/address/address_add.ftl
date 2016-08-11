@@ -20,7 +20,7 @@
 				添加地址
 			[/#if]
 		</div>
-		<form action="/goods/add.jhtml" id="base_info_form" method="post" onsubmit="return checkForm()">
+		<form action="${base}/goods/add.jhtml" id="base_info_form" method="post" onsubmit="return checkForm()">
 			<div class="data_form" >
 				<input type="hidden" id="id" name="id" value="${address.id}"/>
 				<table align="center">
@@ -64,7 +64,7 @@
 						<td>
 							<div>
 								<input type="button" class="btn btn-primary" id="save_address" value="保存"/>
-								&nbsp;<button class="btn btn-primary" type="button" onclick="javascript:window.location='/address/list.jhtml'">返回</button>
+								&nbsp;<button class="btn btn-primary" type="button" onclick="javascript:window.location='${base}/address/list.jhtml'">返回</button>
 							</div>
 						</td>
 					</tr>

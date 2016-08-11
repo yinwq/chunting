@@ -114,7 +114,7 @@ $(function(){
 	    submitHandler:function(){
 	    	if(save_base_info()){
 				if(next_handler == 0){
-					window.location.href="/goods/list.jhtml";
+					window.location.href="${base}/goods/list.jhtml";
 				}
 			}
 		}
@@ -132,7 +132,7 @@ function init(){
 function getArea(parentId , level){
 	$.ajax({
     	type:"POST",
-    	url:"/address/areas.jhtml",
+    	url:"/${base}/address/areas.jhtml",
     	data:{parentId:parentId},
     	dataType:"json",
     	async:false,
@@ -157,7 +157,7 @@ function save_base_info(){
 	returnflag = false;
 	$.ajax({
     	type:"POST",
-    	url:"/goods/add.jhtml",
+    	url:"${base}/goods/add.jhtml",
     	data:$("#base_info_form").serialize(),
     	dataType:"json",
     	async:false,

@@ -85,9 +85,9 @@
 		<div class="row-fluid">
 			<div class="span2 bs-docs-sidebar" >
 				<ul class="nav nav-list bs-docs-sidenav">
-					<li><a href="/login/toLogin.jhtml"><i class="icon-chevron-right"></i>首页</a></li>
-					<li><a href="/goods/list.jhtml"><i class="icon-chevron-right"></i>商品管理</a></li>
-					<li><a href="/address/list.jhtml"><i class="icon-chevron-right"></i>地址管理</a></li>
+					<li><a href="${base}/login/toLogin.jhtml"><i class="icon-chevron-right"></i>首页</a></li>
+					<li><a href="${base}/goods/list.jhtml"><i class="icon-chevron-right"></i>商品管理</a></li>
+					<li><a href="${base}/address/list.jhtml"><i class="icon-chevron-right"></i>地址管理</a></li>
 					<li><a href="dormBuild?action=list"><i class="icon-chevron-right"></i>宿舍楼管理</a></li>
 					<li><a href="record?action=list"><i class="icon-chevron-right"></i>缺勤记录</a></li>
 					<li><a href="password?action=preChange"><i class="icon-chevron-right"></i>修改密码</a></li>

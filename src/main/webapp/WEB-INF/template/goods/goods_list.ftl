@@ -11,7 +11,7 @@
 	<input type="hidden" id="pageSize" value=""/>
 	<input type="hidden" id="pageNo" value=""/>
 	<form name="search_form" id="search_form" class="form-search" style="padding-bottom: 0px">
-			<button class="btn btn-success" type="button" style="margin-right: 50px;" onclick="javascript:window.location='/goods/to_add.jhtml'">添加</button>
+			<button class="btn btn-success" type="button" style="margin-right: 50px;" onclick="javascript:window.location='${base}/goods/to_add.jhtml'">添加</button>
 			<span class="data_search">
 				<span>创建时间段：</span>
 				<input id="strat_time" name="startTime" value="${startTime}"  onclick="laydate({istime:true, format: 'YYYY-MM-DD hh:mm:ss'})" type="text">

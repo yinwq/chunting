@@ -20,7 +20,7 @@
 				添加商品
 			[/#if]
 		</div>
-		<form action="/goods/add.jhtml" id="base_info_form" method="post" onsubmit="return checkForm()">
+		<form action="${base}/goods/add.jhtml" id="base_info_form" method="post" onsubmit="return checkForm()">
 			<div class="data_form" >
 				<input type="hidden" id="id" name="id" value="${goods.id}"/>
 				<table align="center">
@@ -68,7 +68,7 @@
 				</table>
 				<div align="center">
 					<input type="button" class="btn btn-primary" id="save_goods" value="保存"/>
-					&nbsp;<button class="btn btn-primary" type="button" onclick="javascript:window.location='/goods/list.jhtml'">返回</button>
+					&nbsp;<button class="btn btn-primary" type="button" onclick="javascript:window.location='${base}/goods/list.jhtml'">返回</button>
 				</div>
 				<div align="center">
 					<font id="error" color="red">${error}</font>

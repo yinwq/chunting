@@ -72,7 +72,7 @@
 </head>
 <body>
 <div class="container">
-      <form name="myForm" class="form-signin" action="/login/loginAdmin.jhtml" method="post" onsubmit="return checkForm()">
+      <form name="myForm" class="form-signin" action="${base}/login/loginAdmin.jhtml" method="post" onsubmit="return checkForm()">
         <h2 class="form-signin-heading"><font color="gray">蠢婷出货管理系统</font></h2>
         <input id="username" name="username" value="${admin.username }" type="text" class="input-block-level" placeholder="用户名...">
         <input id="password" name="password" value="${admin.password }" type="password" class="input-block-level" placeholder="密码..." >
