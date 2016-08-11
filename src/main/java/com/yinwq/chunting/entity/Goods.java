@@ -1,19 +1,14 @@
 package com.yinwq.chunting.entity;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
+import com.yinwq.chunting.util.PagedQuery;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import com.yinwq.chunting.util.PagedQuery;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Goods extends PagedQuery {
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
+
 	/**
 	 * Id
 	 */
