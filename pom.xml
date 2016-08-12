@@ -186,7 +186,13 @@
 		  <artifactId>commons-lang3</artifactId>
 		  <version>${commons.lang3.version}</version>
 	  </dependency>
-  </dependencies>  
+       <!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
+       <dependency>
+           <groupId>javax.servlet</groupId>
+           <artifactId>servlet-api</artifactId>
+           <version>2.5</version>
+       </dependency>
+   </dependencies>
   <build>
     <finalName>chunting</finalName>
   </build>
