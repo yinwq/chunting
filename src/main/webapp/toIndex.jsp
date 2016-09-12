@@ -4,8 +4,6 @@
 <% String url = request.getScheme()+"://"+ request.getServerName()+request.getRequestURI()+"?"+request.getQueryString(); %>
 <html>
 <body>
-	<script type="text/javascript">
-		window.location.href = '${pageContext.request.contextPath}/login/toLogin.jhtml';
-	</script>
+	<jsp:forward page="${pageContext.request.contextPath}/login/toLogin.jhtml"></jsp:forward>
 </body>
 </html>
