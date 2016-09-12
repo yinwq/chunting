@@ -5,7 +5,7 @@
 <html>
 <body>
 	<script type="text/javascript">
-		window.location.href = '${pageContext.request.contextPath}/chunting/login/toLogin.jhtml';
+		window.location.href = '${pageContext.request.contextPath}/login/toLogin.jhtml';
 	</script>
 </body>
 </html>
