@@ -4,6 +4,6 @@
 <% String url = request.getScheme()+"://"+ request.getServerName()+request.getRequestURI()+"?"+request.getQueryString(); %>
 <html>
 <body>
-	<jsp:forward page="chunting/login/toLogin.jhtml"></jsp:forward>
+	<jsp:forward page="/login/toLogin.jhtml"></jsp:forward>
 </body>
 </html>
