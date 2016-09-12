@@ -7,11 +7,6 @@
 		color:red;
 	}
 </style>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$("ul li:eq(1)").addClass("active");
-	});
-</script>
 <div class="data_list">
 		<div class="data_list_title">
 			[#if address.id?has_content]

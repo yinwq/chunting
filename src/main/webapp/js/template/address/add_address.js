@@ -126,13 +126,26 @@ function init(){
 	//初始化省级
 	var province = $("#province");
 	getArea(0,province);
+
+	//初始化
+	$("ul li:eq(2)").addClass("active");
+	$('.form_datetime').datetimepicker({
+		language:  'en',
+		weekStart: 1,
+		todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 1,
+		minView: 2,
+		forceParse: 0,
+	});
 }
 
 
 function getArea(parentId , level){
 	$.ajax({
     	type:"POST",
-    	url:"/${base}/address/areas.jhtml",
+    	url:base + "/address/areas.jhtml",
     	data:{parentId:parentId},
     	dataType:"json",
     	async:false,
