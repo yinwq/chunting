@@ -2,7 +2,7 @@ package com.yinwq.chunting.entity;
 
 import java.util.Date;
 
-import com.yinwq.chunting.util.PagedQuery;
+import com.yinwq.chunting.common.util.PagedQuery;
 
 public class Area extends PagedQuery{
 	

@@ -19,7 +19,7 @@ public class MyCustomer extends EndPoint {
     public void receiveMessage() throws Exception {
 
         //声明要关注的队列
-        channel.queueDeclare(endPointName, false, false, false, null);
+        channel.queueDeclare(routingKey, true, false, false, null);
         System.out.println("Customer Waiting Received messages");
 
         // 告诉服务器我们需要那个频道的消息，如果频道中有消息，就会执行回调函数handleDelivery
@@ -32,7 +32,7 @@ public class MyCustomer extends EndPoint {
             }
         };
         //自动回复队列应答 -- RabbitMQ中的消息确认机制
-        channel.basicConsume(endPointName, true, consumer);
+        channel.basicConsume(routingKey, true, consumer);
     }
 
 }

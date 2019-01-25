@@ -17,8 +17,8 @@ import com.yinwq.chunting.entity.Area;
 import com.yinwq.chunting.entity.Goods;
 import com.yinwq.chunting.service.IAreaService;
 import com.yinwq.chunting.service.IGoodsService;
-import com.yinwq.chunting.util.JsonEntity;
-import com.yinwq.chunting.util.PagedData;
+import com.yinwq.chunting.common.util.JsonEntity;
+import com.yinwq.chunting.common.util.PagedData;
   
   
 @Controller  

@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yinwq.chunting.entity.Goods;
 import com.yinwq.chunting.service.IGoodsService;
-import com.yinwq.chunting.util.JsonEntity;
-import com.yinwq.chunting.util.PagedData;
+import com.yinwq.chunting.common.util.JsonEntity;
+import com.yinwq.chunting.common.util.PagedData;
   
   
 @Controller  

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.yinwq.chunting.dao.IGoodsDao;
 import com.yinwq.chunting.entity.Goods;
 import com.yinwq.chunting.service.IGoodsService;
-import com.yinwq.chunting.util.PagedData;
+import com.yinwq.chunting.common.util.PagedData;
   
   
 @Service("goodsService")  

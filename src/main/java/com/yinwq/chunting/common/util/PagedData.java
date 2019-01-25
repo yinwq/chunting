@@ -1,4 +1,4 @@
-package com.yinwq.chunting.util;
+package com.yinwq.chunting.common.util;
 
 import java.io.Serializable;
 import java.util.List;

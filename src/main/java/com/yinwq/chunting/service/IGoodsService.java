@@ -1,7 +1,7 @@
 package com.yinwq.chunting.service;  
 
 import com.yinwq.chunting.entity.Goods;
-import com.yinwq.chunting.util.PagedData;
+import com.yinwq.chunting.common.util.PagedData;
   
 public interface IGoodsService {  
 	

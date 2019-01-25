@@ -1,6 +1,6 @@
 package com.yinwq.chunting.entity;
 
-import com.yinwq.chunting.util.PagedQuery;
+import com.yinwq.chunting.common.util.PagedQuery;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 

@@ -6,11 +6,11 @@ package com.yinwq.chunting.mq;
  */
 public class Producer extends EndPoint {
 
-    public Producer(String endpointName) throws Exception {
-        super(endpointName);
+    public Producer(String routingKey) throws Exception {
+        super(routingKey);
     }
 
     public void sendMessage(String object) throws Exception {
-        channel.basicPublish("exchange_1", endPointName, null, object.getBytes("UTF-8"));
+        channel.basicPublish("quote", routingKey, null, object.getBytes("UTF-8"));
     }
 }

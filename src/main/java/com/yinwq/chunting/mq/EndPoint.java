@@ -11,11 +11,11 @@ import com.rabbitmq.client.ConnectionFactory;
 public abstract class EndPoint {
     protected Channel channel;
     protected Connection connection;
-    protected String endPointName;
+    protected String routingKey;
 
-    public EndPoint(String endpointName) throws Exception {
+    public EndPoint(String routingKey) throws Exception {
 
-        this.endPointName = endpointName;
+        this.routingKey = routingKey;
 
         //创建一个连接工厂 connection factory
         ConnectionFactory factory = new ConnectionFactory();
@@ -33,7 +33,14 @@ public abstract class EndPoint {
         //创建 channel实例
         channel = connection.createChannel();
 
-        channel.queueDeclare(endpointName, false, false, false, null);
+        channel.exchangeDeclare("quote", "topic", true, false, null);
+
+        //队列名称
+        String queueName = routingKey;
+        //创建队列
+        channel.queueDeclare(queueName, true, false, false, null);
+        //把队列绑定到路由上
+        channel.queueBind(queueName, "quote", routingKey);
 
     }
 

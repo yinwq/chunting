@@ -40,4 +40,12 @@ public class User {
     public void setAge(Integer age) {
         this.age = age;
     }
+
+    public User() {
+    }
+
+    public User(Integer id, String userName) {
+        this.id = id;
+        this.userName = userName;
+    }
 }

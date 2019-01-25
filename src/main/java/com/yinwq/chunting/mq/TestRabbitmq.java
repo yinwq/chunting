@@ -16,7 +16,7 @@ public class TestRabbitmq {
 
     private static void receive() {
         try {
-            MyCustomer myCustomer = new MyCustomer("queue");
+            MyCustomer myCustomer = new MyCustomer("quote_shanghai_picc");
             myCustomer.receiveMessage();
         } catch (Exception e) {
             e.printStackTrace();
@@ -26,10 +26,10 @@ public class TestRabbitmq {
     private static void send() {
         try{
 
-            Producer producer = new Producer("queue");
+            Producer producer = new Producer("shanghai_picc");
 
             HashMap message = new HashMap();
-            message.put("message content", "hello rabbitmq");
+            message.put("message content", "hello rabbitmq1");
             producer.sendMessage(JSON.toJSONString(message));
             producer.close();
             System.out.println("message content "+ "hello rabbitmq" +" sent.");
