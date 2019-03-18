@@ -15,19 +15,19 @@ public class GoodsServiceImpl implements IGoodsService {
     @Resource  
     private IGoodsDao goodsDao;
 
+	@Override
 	public int insertGoods(Goods goods) {
-		// TODO Auto-generated method stub
 		goodsDao.insert(goods);
 		return goods.getId();
 	}
 
+	@Override
 	public Goods getGoodsById(Integer goodsId) {
-		// TODO Auto-generated method stub
 		return goodsDao.selectByPrimaryKey(goodsId);
 	}
 
+	@Override
 	public PagedData<Goods> selectGoodsList(Goods goods) {
-		// TODO Auto-generated method stub
 		PagedData<Goods> paged= new PagedData<Goods>();
 		paged.setPageNo(goods.getPageNo());
 		paged.setPageSize(goods.getPageSize());
@@ -36,8 +36,8 @@ public class GoodsServiceImpl implements IGoodsService {
 		return paged;
 	}
 
+	@Override
 	public int updateGoods(Goods goods) {
-		// TODO Auto-generated method stub
 		int isTure = goodsDao.updateByPrimaryKeySelective(goods);
 		if(isTure == 1){
 			return goods.getId();
@@ -46,8 +46,8 @@ public class GoodsServiceImpl implements IGoodsService {
 		return 0;
 	}
 
+	@Override
 	public int deleteGoods(Integer goodsId) {
-		// TODO Auto-generated method stub
 		return goodsDao.deleteByPrimaryKey(goodsId);
 	} 
     

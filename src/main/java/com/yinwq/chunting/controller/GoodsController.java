@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.yinwq.chunting.common.annotation.UserLog;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +25,8 @@ public class GoodsController {
 	
 	@Resource
 	private IGoodsService goodsService;
-	
+
+	@UserLog(operationContent = "商品列表")
     @RequestMapping("/list")  
     public String list(HttpServletRequest request,Model model,Goods goods){ 
     	HttpSession session = request.getSession();
