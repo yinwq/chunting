@@ -31,11 +31,11 @@ import com.yinwq.chunting.entity.UserLogDO;
 public class UserLogAspect {
 
 
-    //Controller层切点
+    /**
+     * Controller层切点
+     */
     @Pointcut("@annotation(com.yinwq.chunting.common.annotation.UserLog)")
-    public void controllerAspect() {
-
-    }
+    public void controllerAspect() {}
 
     /**
      * 前置通知 用于拦截Controller层记录用户的操作
