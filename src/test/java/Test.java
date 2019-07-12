@@ -1,4 +1,10 @@
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.google.common.collect.Maps;
 import com.yinwq.chunting.entity.Goods;
+import com.yinwq.chunting.study.postConstruct.AAA;
+
+import java.util.Map;
 
 /**
  * @Author: yinwenqiang@qccr.com
@@ -6,18 +12,8 @@ import com.yinwq.chunting.entity.Goods;
  */
 public class Test {
     public static void main(String[] args) {
-        int i1 = 3;
-        int i2 = i1;
-        i2 = 4;
-        System.err.println("i1==" + i1);
-        System.err.println("i2==" + i2);
-
-        Goods goods1 = new Goods();
-        goods1.setGoodsStock(5);
-        Goods goods2 = goods1;
-        goods2.setGoodsStock(6);
-        System.err.println("goods1.goodsStock==" + goods1.getGoodsStock());
-        System.err.println("goods2.goodsStock==" + goods2.getGoodsStock());
-
+        long a = 100;
+        long b = 1000;
+        System.err.println("a/b=" + (int) Math.ceil((float)a/b));
     }
 }
